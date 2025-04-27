@@ -1,7 +1,13 @@
-import { AppBar, Toolbar, Button, Box } from '@mui/material';
+import { AppBar, Toolbar, Button, Box, IconButton } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import { Brightness4, Brightness7 } from '@mui/icons-material'; // Iconos para modo oscuro y claro
 
-const Navbar = () => {
+interface NavbarProps {
+  darkMode: boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
   const navItems = [
     { title: 'Inicio', path: '/' },
     { title: 'Sobre mí', path: '/about' },
@@ -29,9 +35,18 @@ const Navbar = () => {
             </Button>
           ))}
         </Box>
+        
+        {/* Botón para cambiar entre modo claro y oscuro */}
+        <IconButton 
+          color="inherit" 
+          onClick={() => setDarkMode(!darkMode)} 
+          sx={{ ml: 2 }}
+        >
+          {darkMode ? <Brightness7 /> : <Brightness4 />}
+        </IconButton>
       </Toolbar>
     </AppBar>
   );
 };
 
-export default Navbar; 
+export default Navbar;
