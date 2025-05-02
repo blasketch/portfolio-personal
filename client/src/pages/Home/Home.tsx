@@ -38,7 +38,7 @@ const Home = () => {
   const nameArray = name.split('');
 
   return (
-    <Container>
+    <Container maxWidth="lg" sx={{ bgcolor: 'background.default' }}>
       <Box
         sx={{
           minHeight: '100vh',
@@ -47,9 +47,17 @@ const Home = () => {
           justifyContent: 'center',
           alignItems: 'center',
           gap: 4,
+          py: 4,
+          bgcolor: 'background.default',
         }}
       >
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 0.5 }}>
+        <Box sx={{ 
+          display: 'flex', 
+          flexWrap: 'wrap', 
+          justifyContent: 'center', 
+          gap: 0.5,
+          bgcolor: 'background.default',
+        }}>
           {nameArray.map((letter, i) => (
             <motion.div
               key={i}
@@ -65,6 +73,7 @@ const Home = () => {
                 textShadow: '2px 2px 0px #673ab7',
                 transform: 'scale(1)',
                 display: 'inline-block',
+                backgroundColor: 'transparent',
               }}
             >
               {letter === ' ' ? '\u00A0' : letter}
@@ -81,11 +90,12 @@ const Home = () => {
             variant="h5" 
             sx={{ 
               fontFamily: 'monospace',
-              color: 'text.secondary',
+              color: 'text.primary',
               minHeight: '2em',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              bgcolor: 'background.default',
             }}
           >
             {text}
@@ -109,7 +119,8 @@ const Home = () => {
             sx={{ 
               textAlign: 'center',
               maxWidth: '600px',
-              color: 'text.secondary'
+              color: 'text.primary',
+              bgcolor: 'background.default',
             }}
           >
             Transformando datos en soluciones innovadoras
