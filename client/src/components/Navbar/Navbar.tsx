@@ -16,7 +16,16 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
   ];
 
   return (
-    <AppBar position="sticky" color="default" elevation={0}>
+    <AppBar 
+      position="sticky" 
+      elevation={0}
+      sx={{
+        background: darkMode 
+          ? 'linear-gradient(90deg, #1a237e 0%, #311b92 100%)'
+          : 'linear-gradient(90deg, #3f51b5 0%, #673ab7 100%)',
+        color: 'white'
+      }}
+    >
       <Toolbar>
         <Box sx={{ display: 'flex', gap: 2, margin: '0 auto' }}>
           {navItems.map((item) => (
@@ -24,10 +33,15 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
               key={item.path}
               component={RouterLink}
               to={item.path}
-              color="inherit"
               sx={{
+                color: 'white',
                 '&:hover': {
-                  backgroundColor: 'rgba(0, 0, 0, 0.04)'
+                  backgroundColor: darkMode 
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(255, 255, 255, 0.2)',
+                  transform: 'translateY(-2px)',
+                  transition: 'all 0.3s ease',
+                  color: '#FFD700'
                 }
               }}
             >
@@ -40,7 +54,14 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
         <IconButton 
           color="inherit" 
           onClick={() => setDarkMode(!darkMode)} 
-          sx={{ ml: 2 }}
+          sx={{ 
+            ml: 2,
+            '&:hover': {
+              backgroundColor: darkMode 
+                ? 'rgba(255, 255, 255, 0.1)'
+                : 'rgba(255, 255, 255, 0.2)'
+            }
+          }}
         >
           {darkMode ? <Brightness7 /> : <Brightness4 />}
         </IconButton>
